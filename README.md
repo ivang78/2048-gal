@@ -2,6 +2,8 @@
 
 Deep adaptation of 2048 game previously written for CP/M to Galaksija computer.
 
+![screenshot](https://github.com/ivang78/2048-gal/blob/master/screenshot.png?raw=true)
+
 ## Compiling
 
 You may use and modify source code for your own purpose.  
