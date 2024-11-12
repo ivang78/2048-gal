@@ -187,10 +187,10 @@ int main() {
         c = fgetc_cons();
     } while (c != 10);
 	gal_cls();
-L1:
-	won = 0;
 	rnd = z80_wpeek(0x2AA7);
 	srand(rnd);
+L1:
+	won = 0;
     score = 0;
     memset(f, 0, sizeof(f));
     a = 2;
