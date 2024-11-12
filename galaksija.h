@@ -1,4 +1,4 @@
-/* Header file with specific GALAKSIJA functions */
+/* Header file with specific GALAKSIJA low-level functions */
 
 #define z80_bpoke(a,b)  (*(unsigned char *)(a) = b)
 #define z80_wpoke(a,b)  (*(unsigned int *)(a) = b)
@@ -9,12 +9,14 @@
 
 unsigned char _scr_x, _scr_y;
 
-// Clear the screen (generic or VT100 console)
+// Low-level clear the screen and reset internal cursor position
 void gal_cls() { 
+	int z;
+	for (z = 0; z <512; z++) {
+		z80_bpoke(0x2800 + z, 32);
+	}
 	_scr_x = 0;
 	_scr_y = 0;
-	printf("%c",12);
-	printf("\x0c");
 }
 
 // Set internal position of cursor for low-level putc and call gotoxy
