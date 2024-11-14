@@ -13,5 +13,7 @@ Compiling instructions:
 
 ## Releases
 
-Repo contains built GPT (Galaksija Tape) file **2048-gal.gtp** and WAV file **2048-gal.wav**. 
+Repo contains built GTP (Galaksija Tape) file **2048-gal.gtp** and WAV file **2048-gal.wav**.  
 
+Try a game in [online emulator GAL-E](https://galaksija.net/?load=ivan2048)  
+Big thanks to Dragoljub Obradović for hosting game at his [emulator page](https://galaksija.net/)! 
