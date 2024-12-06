@@ -2,7 +2,7 @@
 #include <conio.h>
 #include "galaksija.h"
 
-unsigned char c, d, a, won;
+unsigned char c, d, a, won, show_won;
 int f[17][17];
 int score, bestscore, rnd;
 
@@ -107,22 +107,24 @@ void print() {
 
 void you_win() {
 	int x, y;
-	gal_gotoxy(11, 7); gal_putc(213); gal_puts("YOU WIN!"); gal_putc(149);
-	gal_gotoxy(11, 8); gal_putc(213); gal_puts("        "); gal_putc(149);
-	gal_gotoxy(11, 6);
-	gal_putc(215);
-	for (x = 1; x <= 8; x++) {
-		gal_putc(195);
+	show_won = 1;
+	gal_gotoxy(9,7); gal_putc(149); gal_puts(" YOU WIN! "); gal_putc(170);
+	gal_gotoxy(9,8); gal_putc(149); gal_puts("ENTER-NEXT"); gal_putc(170);
+	gal_gotoxy(9,9); gal_putc(149); gal_puts("DEL-EXIT  "); gal_putc(170);
+	gal_gotoxy(9,6);
+	for (x = 1; x <= 12; x++) {
+		gal_putc(240);
 	}
-	gal_putc(149);
-	gal_gotoxy(11,9);
-	for (x = 1; x <= 9; x++) {
+	gal_gotoxy(9,10);
+	for (x = 1; x <= 12; x++) {
 		gal_putc(131);
 	}
-	gal_putc(129);
 	do {
 		c = fgetc_cons();
-	} while (c != 10);
+	} while (c != 10 && c != 0);
+	if (c == 10) {
+		print();
+	}
 }
 
 void dshf(int x0, int y0, int dx, int dy) {
@@ -191,6 +193,7 @@ int main() {
 	srand(rnd);
 L1:
 	won = 0;
+	show_won = 0;
 	score = 0;
 	memset(f, 0, sizeof(f));
 	a = 2;
@@ -201,6 +204,9 @@ L1:
 
 	do {
 		print();
+		if (won == 1 && show_won == 0) {
+			you_win();
+		}
 		c = fgetc_cons();
 		switch (c) {
 			case 29: // left 
@@ -221,10 +227,6 @@ L1:
 				break;
 			default:
 				break;			
-		}
-		if (won == 1) {
-			you_win();
-			c = 0;
 		}
 	} while (c != 0);
 	gal_cls();
