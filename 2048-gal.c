@@ -189,7 +189,7 @@ int main() {
 		c = fgetc_cons();
 	} while (c != 10);
 	gal_cls();
-	rnd = z80_wpeek(0x2AA7);
+	rnd = z80_wpeek(RND_ADDR);
 	srand(rnd);
 L1:
 	won = 0;
