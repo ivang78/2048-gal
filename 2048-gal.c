@@ -4,7 +4,8 @@
 
 unsigned char c, d, a, won, show_won;
 int f[17][17];
-int score, bestscore, rnd;
+unsigned int score, bestscore;
+int rnd;
 
 // Print frame
 void frame() {
